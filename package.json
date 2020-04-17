@@ -1,0 +1,24 @@
+{
+  "name": "glue-style",
+  "version": "1.0.0",
+  "description": "胶水样式",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warwr1ck/glue-style.git"
+  },
+  "keywords": [
+    "glue",
+    "scss",
+    "style"
+  ],
+  "author": "warwr1ck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/warwr1ck/glue-style/issues"
+  },
+  "homepage": "https://github.com/warwr1ck/glue-style#readme"
+}

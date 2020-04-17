@@ -1,0 +1,40 @@
+$spacer: 4px !default;
+
+@function strip-units ($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+$spacers: ();
+
+@for $i from 0 through 20 {
+  $spacers: map-merge(
+    $spacers,
+    (
+      strip-units($i * $spacer): $spacer * $i
+    )
+  );
+}
+
+$negative-spacers: ();
+
+@for $i from 1 through 12 {
+  $negative-spacers: map-merge(
+    $negative-spacers,
+    (
+      'n' + strip-units($i * $spacer): -$spacer * $i
+    )
+  );
+}
+
+$font-spacers: ();
+
+@for $i from 8 through 20 {
+  @if $i % 2 == 0 {
+    $font-spacers: map-merge(
+      $font-spacers,
+      (
+        strip-units($i + $spacer): $i * 1px + $spacer
+      )
+    );
+  }
+}

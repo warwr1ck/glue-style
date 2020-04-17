@@ -1,0 +1,9 @@
+@import './variable.scss';
+@import './utilties.scss';
+@import './settings.scss';
+
+@each $key, $utility in $utilties {
+  @if type-of($value: $utility) == 'map' {
+    @include generate-utility($utility);
+  }
+}

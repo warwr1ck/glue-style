@@ -1,0 +1,41 @@
+@mixin generate-utility ($utility) {
+  $values: map-get($utility, values);
+
+  // 如果values是list或者string，转换到map中
+  @if type-of($values) == 'string' or type-of(nth($values, 1)) != 'list' {
+    $values: zip($values, $values);
+  }
+
+  @each $value in $values {
+    $properties: map-get($map: $utility, $key: property);
+
+    // 处理多条属性
+    @if type-of($value: $properties) == 'string' {
+      $properties: append((), $properties);
+    }
+
+    @include generate-utility-body($utility, $properties, $value);
+  }
+}
+
+@mixin generate-utility-body($utility, $properties, $value) {
+  $property-class: map-get($map: $utility, $key: class);
+  $property-class: if($property-class, $property-class, nth($properties, 1));
+
+  $property-class-modifier: if(nth($value, 1), '-' + nth($value, 1), '');
+
+  $value: nth($value, 2);
+
+  .#{$property-class + $property-class-modifier} {
+    @for $i from 1 through length($properties) {
+      $property: nth($properties, $i);
+      $val: $value;
+
+      @if type-of($value: $value) == 'list' and length($list: $properties) == length($value) {
+        $val: nth($value, $i);
+      }
+
+      #{$property}: $val !important;
+    }
+  }
+}
