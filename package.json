@@ -1,11 +1,11 @@
 {
   "name": "glue-style",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "胶水样式",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "sass src/index.scss glue-style.css --no-source-map -s compressed"
+    "build": "node build"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,14 @@
   "homepage": "https://github.com/warwr1ck/glue-style#readme",
   "devDependencies": {
     "sass": "^1.26.3"
-  }
+  },
+  "dependencies": {
+    "autoprefixer": "^9.7.6",
+    "postcss": "^7.0.27"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
